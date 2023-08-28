@@ -1,0 +1,23 @@
+version: '1.0'
+services: 
+  interactiview: 
+    image: interactiviewimage:latest
+    container_name: interactiview
+    ports:           
+      - 9097:9097
+    environment:
+      - FLASK_ENV=development  # Set Flask environment
+    networks:      
+      - dremio
+      - database
+      - server
+networks:       
+  dremio:
+    name: nw-dremio-oss
+    external: true 
+  database:
+    name: nw-wmb2b-db
+    external: true
+  server:
+    name: nw-wmb2b-is
+    external: true
